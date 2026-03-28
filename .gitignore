@@ -1,0 +1,51 @@
+# ── Model weights ─────────────────────────────────────────────────────────────
+*.pt
+*.pth
+*.weights
+
+# ── Runtime data (never commit) ───────────────────────────────────────────────
+security.db
+config.json
+known_plates.txt
+
+# ── Generated folders ─────────────────────────────────────────────────────────
+logged_frames/
+recordings/
+unknowns/
+runs/
+evaluation_results/
+
+# ── Known faces (privacy) ─────────────────────────────────────────────────────
+known_faces/
+
+# ── Datasets ──────────────────────────────────────────────────────────────────
+datasets/
+UK Number Plate Recognision.v2i.yolov8/
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Environments ──────────────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── VS Code ───────────────────────────────────────────────────────────────────
+.vscode/
+*.code-workspace
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
