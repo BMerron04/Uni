@@ -1,5 +1,5 @@
 """
-CIS3425 Smart Home Security System
+Smart Home Security System
 Combined Server — Face Recognition + Number Plate Detection
 Features: Login, Multi-Camera, Settings Panel, Enrolment, Dev Panel
 
@@ -792,7 +792,7 @@ def make_flask_app(state, db, cfg):
                 cfg["face_frame_skip"]       = int(request.form.get("face_skip", 2))
                 cfg["plate_frame_skip"]      = int(request.form.get("plate_skip", 3))
                 save_config(cfg)
-                msg = "✅ Thresholds saved. Restart server to apply."
+                msg = " Thresholds saved. Restart server to apply."
 
             elif action == "add_camera":
                 new_cam = {
@@ -809,13 +809,13 @@ def make_flask_app(state, db, cfg):
                     pass
                 cfg["cameras"].append(new_cam)
                 save_config(cfg)
-                msg = f"✅ Camera '{new_cam['name']}' added. Restart server to activate."
+                msg = f" Camera '{new_cam['name']}' added. Restart server to activate."
 
             elif action == "remove_camera":
                 cam_id = request.form.get("cam_id")
                 cfg["cameras"] = [c for c in cfg["cameras"] if c["id"] != cam_id]
                 save_config(cfg)
-                msg = "✅ Camera removed."
+                msg = " Camera removed."
 
             elif action == "toggle_camera":
                 cam_id = request.form.get("cam_id")
@@ -823,7 +823,7 @@ def make_flask_app(state, db, cfg):
                     if c["id"] == cam_id:
                         c["enabled"] = not c.get("enabled", True)
                 save_config(cfg)
-                msg = "✅ Camera toggled."
+                msg = " Camera toggled."
 
             elif action == "change_password":
                 username    = session.get("username")
@@ -835,11 +835,11 @@ def make_flask_app(state, db, cfg):
                     if new_pw == confirm_pw and len(new_pw) >= 6:
                         cfg["users"][username]["password_hash"] = hash_password(new_pw)
                         save_config(cfg)
-                        msg = "✅ Password changed."
+                        msg = " Password changed."
                     else:
-                        msg = "❌ Passwords don't match or too short (min 6 chars)."
+                        msg = " Passwords don't match or too short (min 6 chars)."
                 else:
-                    msg = "❌ Current password incorrect."
+                    msg = " Current password incorrect."
 
             elif action == "add_user":
                 new_username = request.form.get("new_username","").strip()
@@ -851,9 +851,9 @@ def make_flask_app(state, db, cfg):
                         "role": new_role
                     }
                     save_config(cfg)
-                    msg = f"✅ User '{new_username}' added."
+                    msg = f" User '{new_username}' added."
                 else:
-                    msg = "❌ Username and password required."
+                    msg = " Username and password required."
 
         return render_template_string(SETTINGS_HTML,
                                       cfg=cfg, msg=msg,
@@ -1009,7 +1009,7 @@ def make_flask_app(state, db, cfg):
         with state.lock:
             state.known_plates.add(plate)
         state.remove_unknown_plate(uid)
-        return jsonify({"success": True, "message": f"✅ {plate} added to whitelist"})
+        return jsonify({"success": True, "message": f" {plate} added to whitelist"})
 
     return app
 
