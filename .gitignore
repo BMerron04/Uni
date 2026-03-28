@@ -1,7 +1,5 @@
-# ── Model weights ─────────────────────────────────────────────────────────────
-*.pt
-*.pth
-*.weights
+# ── Model weights (kept in repo for easy deployment) ──────────────────────────
+# *.pt files are included — they are small enough for GitHub (<100MB each)
 
 # ── Runtime data (never commit) ───────────────────────────────────────────────
 security.db
